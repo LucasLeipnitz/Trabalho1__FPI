@@ -102,6 +102,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         SaveScreen save = new SaveScreen(image);
+        save.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         save.setVisible(true);
     }//GEN-LAST:event_save_buttonActionPerformed
 

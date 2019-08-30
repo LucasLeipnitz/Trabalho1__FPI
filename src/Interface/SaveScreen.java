@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Lucas
@@ -53,6 +55,11 @@ public class SaveScreen extends javax.swing.JFrame {
         });
 
         cancel_button.setText("Cancelar");
+        cancel_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,8 +99,17 @@ public class SaveScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_name_txt_fieldActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        image.saveImage(name_txt_field.getText());
+        try{
+            String file_name = name_txt_field.getText();
+            image.saveImage(file_name);
+        }catch(NullPointerException exc){
+            System.out.println("Imagem não selecionada");
+        }
     }//GEN-LAST:event_save_buttonActionPerformed
+
+    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_cancel_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel_button;
