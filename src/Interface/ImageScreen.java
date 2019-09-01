@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -39,7 +40,7 @@ public class ImageScreen {
         label.setIcon(new ImageIcon(image));
     }
     
-    private void setFrame(String filepath){
+    private void setFrame(String filepath, JButton button){
         frame = new JFrame(filepath);
         
         frame.addWindowListener(new WindowAdapter() {
@@ -52,13 +53,22 @@ public class ImageScreen {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.getContentPane().add(label,BorderLayout.CENTER);
         frame.pack();
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(button);
+        frame.setLocation(calculatePositionX(button),calculatePositionY(button));
         frame.setVisible(true);
     }
     
-    public void setScreen(BufferedImage image, String filepath){
+    private int calculatePositionX(JButton button){
+        return button.getLocationOnScreen().x - frame.getWidth()/2;
+    }
+    
+    private int calculatePositionY(JButton button){
+        return button.getLocationOnScreen().y - frame.getHeight()/2;
+    }
+    
+    public void setScreen(BufferedImage image, String filepath, JButton button){
         setClosed(false);
         setImage(image);
-        setFrame(filepath);
+        setFrame(filepath,button);
     }
 }
