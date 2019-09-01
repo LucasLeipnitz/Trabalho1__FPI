@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Control.ImageControl;
 import javax.swing.JFrame;
 
 /**
@@ -13,14 +14,17 @@ import javax.swing.JFrame;
  */
 public class SaveScreen extends javax.swing.JFrame {
     
-    private ImageScreen image;
+    private ImageControl img_control = new ImageControl();
     
     /**
      * Creates new form SaveScreen
      */
-    public SaveScreen(ImageScreen image) {
-        this.image = image;
+    public SaveScreen() {
         initComponents();
+    }
+    
+    public void setControl(ImageControl img_control){
+        this.img_control = img_control;
     }
 
     /**
@@ -33,9 +37,10 @@ public class SaveScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         name_txt_field = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        info_label = new javax.swing.JLabel();
         save_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        error_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,7 +50,7 @@ public class SaveScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Entre o nome do arquivo");
+        info_label.setText("Entre o nome do arquivo");
 
         save_button.setText("Salvar");
         save_button.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +66,8 @@ public class SaveScreen extends javax.swing.JFrame {
             }
         });
 
+        error_label.setText("Imagem não selecionada");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,7 +75,8 @@ public class SaveScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(error_label)
+                    .addComponent(info_label)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(save_button)
@@ -81,19 +89,36 @@ public class SaveScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addComponent(info_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(error_label)
                 .addGap(18, 18, 18)
                 .addComponent(name_txt_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save_button)
                     .addComponent(cancel_button))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setSaveScreen(){
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        hideErrorMessage();
+        setVisible(true);
+    }
+    
+    private void hideErrorMessage(){
+        error_label.setVisible(false);
+    }
+    
+    private void showErrorMessage(){
+        error_label.setVisible(true);
+    }
+    
     private void name_txt_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_txt_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_name_txt_fieldActionPerformed
@@ -101,9 +126,10 @@ public class SaveScreen extends javax.swing.JFrame {
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         try{
             String file_name = name_txt_field.getText();
-            image.saveImage(file_name);
+            img_control.saveImage(file_name);
+            hideErrorMessage();
         }catch(NullPointerException exc){
-            System.out.println("Imagem não selecionada");
+            showErrorMessage();
         }
     }//GEN-LAST:event_save_buttonActionPerformed
 
@@ -113,7 +139,8 @@ public class SaveScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel_button;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel error_label;
+    private javax.swing.JLabel info_label;
     private javax.swing.JTextField name_txt_field;
     private javax.swing.JButton save_button;
     // End of variables declaration//GEN-END:variables

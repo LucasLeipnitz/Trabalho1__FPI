@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import Control.ImageControl;
 
 /**
  *
@@ -21,8 +22,10 @@ import javax.swing.JLabel;
  */
 
 public class MainScreen extends javax.swing.JFrame {
-
-    ImageScreen image = null;
+    
+    ImageControl img_control = new ImageControl();
+    ImageScreen img_screen = new ImageScreen();
+    SaveScreen save = new SaveScreen();
     
     /**
      * Creates new form MainScreen
@@ -81,10 +84,10 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void image_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_image_buttonActionPerformed
-        
         JFileChooser chooser = new JFileChooser();
         int returnVal = chooser.showOpenDialog(chooser);
         String filepath = null;
@@ -95,15 +98,15 @@ public class MainScreen extends javax.swing.JFrame {
             System.out.println("User clicked CANCEL");
             System.exit(1);
         }
-        /*Pegar a imagem*/   
-        image = new ImageScreen(filepath);
-        image.setScreen();
+        /*Pegar a imagem*/ 
+        img_control.setFilePath(filepath);
+        img_control.setImage();
+        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+        save.setControl(img_control);
     }//GEN-LAST:event_image_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        SaveScreen save = new SaveScreen(image);
-        save.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        save.setVisible(true);
+        save.setSaveScreen();
     }//GEN-LAST:event_save_buttonActionPerformed
 
     /**
