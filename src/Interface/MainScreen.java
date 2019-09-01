@@ -26,6 +26,7 @@ public class MainScreen extends javax.swing.JFrame {
     ImageControl img_control = new ImageControl();
     ImageScreen img_screen = new ImageScreen();
     SaveScreen save = new SaveScreen();
+    AlertScreen alert = new AlertScreen();
     
     /**
      * Creates new form MainScreen
@@ -106,7 +107,11 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_image_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        save.setSaveScreen();
+        if(img_screen.getClosed() == true){
+            alert.setVisible(true);
+        }else{
+            save.setSaveScreen();
+        }
     }//GEN-LAST:event_save_buttonActionPerformed
 
     /**

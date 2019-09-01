@@ -128,6 +128,7 @@ public class SaveScreen extends javax.swing.JFrame {
             String file_name = name_txt_field.getText();
             img_control.saveImage(file_name);
             hideErrorMessage();
+            setVisible(false);
         }catch(NullPointerException exc){
             showErrorMessage();
         }
