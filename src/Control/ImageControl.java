@@ -8,6 +8,7 @@ package Control;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -52,5 +53,17 @@ public class ImageControl {
          }catch (Exception exc){
             throw new NullPointerException("Image = null");
          }
-    } 
+    }
+    
+    public void selectFile(){
+        JFileChooser chooser = new JFileChooser();//Selecionador de arquivos
+        int returnVal = chooser.showOpenDialog(chooser);
+        try{
+            //filepath tenta receber caminho do arquivo que usuário escolheu
+            filepath = chooser.getSelectedFile().getAbsolutePath();
+        }catch(NullPointerException exc){
+            //Usuário clicou em cancel e não escolheu nenhuma imagem
+            filepath = null;
+        }
+    }
 }

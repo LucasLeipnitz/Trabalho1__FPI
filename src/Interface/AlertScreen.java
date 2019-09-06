@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Lucas
@@ -75,7 +77,12 @@ public class AlertScreen extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setAlertScreen(){
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setVisible(true);
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

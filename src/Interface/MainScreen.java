@@ -47,6 +47,7 @@ public class MainScreen extends javax.swing.JFrame {
         image_button = new javax.swing.JButton();
         save_button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        copy_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,13 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        copy_button.setText("Copiar Imagem");
+        copy_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copy_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,6 +79,9 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(copy_button)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -89,7 +100,9 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(image_button)
                     .addComponent(save_button))
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(copy_button)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -97,30 +110,38 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void image_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_image_buttonActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        int returnVal = chooser.showOpenDialog(chooser);
-        String filepath = null;
-        if(returnVal == JFileChooser.APPROVE_OPTION){
-            filepath = chooser.getSelectedFile().getAbsolutePath();
-            System.out.printf("%s\n",filepath);
-        }else{
-            System.out.println("User clicked CANCEL");
-            System.exit(1);
+        img_control.selectFile();
+        if(img_control.getFilePath() != null){
+            if(img_screen.getClosed() == false){
+                img_screen.setVisible(false);
+            }
+            img_control.setFilePath(img_control.getFilePath());
+            img_control.setImage();
+            img_screen.setRstVisible(false);
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            save.setControl(img_control);
         }
-        /*Pegar a imagem*/ 
-        img_control.setFilePath(filepath);
-        img_control.setImage();
-        img_screen.setScreen(img_control.getImage(),img_control.getFilePath(),image_button);
-        save.setControl(img_control);
     }//GEN-LAST:event_image_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        img_screen.setRstVisible(false);
         if(img_screen.getClosed() == true){
-            alert.setVisible(true);
+            alert.setAlertScreen();
         }else{
             save.setSaveScreen();
         }
     }//GEN-LAST:event_save_buttonActionPerformed
+
+    private void copy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copy_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_copy_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +179,7 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton copy_button;
     private javax.swing.JButton image_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton save_button;

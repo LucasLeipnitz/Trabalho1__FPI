@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -25,8 +26,14 @@ import javax.swing.JLabel;
 public class ImageScreen {
     
     private JFrame frame;
-    private JLabel label = new JLabel();
+    private JPanel panel = new JPanel();
+    private JLabel src_label = new JLabel();
+    private JLabel rst_label = new JLabel();
     private boolean is_closed = true;
+    
+    public ImageScreen(){
+        rst_label.setVisible(false);
+    }
     
     private void setClosed(boolean option){
         is_closed = option;
@@ -36,39 +43,43 @@ public class ImageScreen {
         return is_closed;
     }
     
-    private void setImage(BufferedImage image){
-        label.setIcon(new ImageIcon(image));
+    public void setRstVisible(boolean option){
+        rst_label.setVisible(option);
     }
     
-    private void setFrame(String filepath, JButton button){
+    private void setImage(BufferedImage image){
+        src_label.setIcon(new ImageIcon(image));
+        rst_label.setIcon(new ImageIcon(image));
+    }
+    
+    private void setFrame(String filepath){
         frame = new JFrame(filepath);
-        
+
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                rst_label.setVisible(false);
                 is_closed = true;
             }
         });
         
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.getContentPane().add(label,BorderLayout.CENTER);
+        panel.add(src_label);
+        panel.add(rst_label);
+        //frame.getContentPane().add(label,BorderLayout.CENTER);
+        frame.add(panel);
         frame.pack();
-        frame.setLocationRelativeTo(button);
-        frame.setLocation(calculatePositionX(button),calculatePositionY(button));
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
-    private int calculatePositionX(JButton button){
-        return button.getLocationOnScreen().x - frame.getWidth()/2;
-    }
-    
-    private int calculatePositionY(JButton button){
-        return button.getLocationOnScreen().y - frame.getHeight()/2;
-    }
-    
-    public void setScreen(BufferedImage image, String filepath, JButton button){
+    public void setScreen(BufferedImage image, String filepath){
         setClosed(false);
         setImage(image);
-        setFrame(filepath,button);
+        setFrame(filepath);
+    }
+    
+    public void setVisible(boolean option){
+        frame.setVisible(option);
     }
 }
