@@ -138,6 +138,8 @@ public class MainScreen extends javax.swing.JFrame {
         }else{
             img_screen.setRstVisible(true);
             img_screen.setVisible(false);
+            img_control.greyImage();
+            img_screen.setRstImage(img_control.getRstImage());
             img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
             img_screen.setVisible(true);
         }

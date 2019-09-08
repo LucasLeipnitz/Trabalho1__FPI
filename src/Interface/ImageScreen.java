@@ -49,6 +49,9 @@ public class ImageScreen {
     
     private void setImage(BufferedImage image){
         src_label.setIcon(new ImageIcon(image));
+    }
+    
+    public void setRstImage(BufferedImage image){
         rst_label.setIcon(new ImageIcon(image));
     }
     
