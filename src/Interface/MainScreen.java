@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import Control.ImageControl;
+import Control.ImageProcessor;
 
 /**
  *
@@ -48,6 +49,9 @@ public class MainScreen extends javax.swing.JFrame {
         save_button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         copy_button = new javax.swing.JButton();
+        grey_button = new javax.swing.JButton();
+        vflip_button = new javax.swing.JButton();
+        hflip_button1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,37 +76,72 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        grey_button.setText("Tons de Cinza");
+        grey_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grey_buttonActionPerformed(evt);
+            }
+        });
+
+        vflip_button.setText("Espalhamento Vertical");
+        vflip_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vflip_buttonActionPerformed(evt);
+            }
+        });
+
+        hflip_button1.setText("Espalhamento Horizontal");
+        hflip_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hflip_button1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(copy_button)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(image_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(save_button)
-                        .addGap(55, 55, 55))))
+                        .addGap(54, 54, 54))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(copy_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(vflip_button)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(grey_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(hflip_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(image_button)
-                    .addComponent(save_button))
+                    .addComponent(save_button)
+                    .addComponent(image_button))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(copy_button)
+                    .addComponent(vflip_button))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(copy_button)
-                .addGap(17, 17, 17))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(grey_button)
+                    .addComponent(hflip_button1))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,6 +156,7 @@ public class MainScreen extends javax.swing.JFrame {
             }
             img_control.setFilePath(img_control.getFilePath());
             img_control.setImage();
+            img_control.copyImage();
             img_screen.setRstVisible(false);
             img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
             save.setControl(img_control);
@@ -124,7 +164,7 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_image_buttonActionPerformed
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        img_screen.setRstVisible(false);
+        //img_screen.setRstVisible(false);
         if(img_screen.getClosed() == true){
             alert.setAlertScreen();
         }else{
@@ -138,12 +178,51 @@ public class MainScreen extends javax.swing.JFrame {
         }else{
             img_screen.setRstVisible(true);
             img_screen.setVisible(false);
-            img_control.greyImage();
+            img_control.copyImage();
             img_screen.setRstImage(img_control.getRstImage());
             img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_copy_buttonActionPerformed
+
+    private void grey_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grey_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.greyImage();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_grey_buttonActionPerformed
+
+    private void vflip_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vflip_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.vFlipImage();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_vflip_buttonActionPerformed
+
+    private void hflip_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hflip_button1ActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.hFlipImage();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_hflip_button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,8 +261,11 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton copy_button;
+    private javax.swing.JButton grey_button;
+    private javax.swing.JButton hflip_button1;
     private javax.swing.JButton image_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton save_button;
+    private javax.swing.JButton vflip_button;
     // End of variables declaration//GEN-END:variables
 }

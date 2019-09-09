@@ -18,6 +18,7 @@ import javax.swing.JFileChooser;
 public class ImageControl {
     
     private BufferedImage image = null;
+    private BufferedImage current_image = null;
     private BufferedImage rst_image = null;
     private String filepath = null;
     private ImageProcessor processor = new ImageProcessor();
@@ -43,28 +44,19 @@ public class ImageControl {
     public void setImage(){
         try{
             image = ImageIO.read(new File(filepath));
+            current_image = image;
             width = image.getWidth();
             height = image.getHeight();
             
         }catch(Exception exc){
             exc.printStackTrace();
         }
-        
-        /*
-        Color[][] rgb = new Color[width][height];
-        
-        for(int i = 0; i < width; i++){
-            for(int j = 0; j < height; j++){
-                rgb[i][j] = new Color(img.getRGB(i,j));
-            }
-        }
-        */ 
     }
     
     public void saveImage(String name){
          File outputfile = new File(name);
          try{
-            ImageIO.write(image, "jpg", outputfile);
+            ImageIO.write(rst_image, "jpg", outputfile);
          }catch (Exception exc){
             throw new NullPointerException("Image = null");
          }
@@ -82,15 +74,41 @@ public class ImageControl {
         }
     }
     
-    public void greyImage(){
-                 
-        int width = image.getWidth();
-        int height = image.getHeight();
+    public void copyImage(){
+        rst_image = image;
+        current_image = image;
+    }
+    
+    public void greyImage(){       
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
         
-        processor.setDimensions(image.getWidth(), image.getHeight());
-        processor.setRGBValues(image);
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
         processor.setNewLuminanceRGB();
-        
         rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getNewLumRGB(),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public void hFlipImage(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        processor.setHorizontalFlipRGB();
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getHFlipRGB(),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public void vFlipImage(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        processor.setVerticalFlipRGB();
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getVFlipRGB(),width,height),width,height);
+        current_image = rst_image;
     }
 }

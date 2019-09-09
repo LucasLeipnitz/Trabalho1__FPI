@@ -7,6 +7,7 @@ package Control;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 /**
  *
@@ -22,8 +23,21 @@ public class ImageProcessor {
     /*Processed Image*/
     private Color[][] new_lum_rgb = null;
     
+    /*Mirroring*/
+    private Color[][] hflip_rgb = null;
+    private Color[][] vflip_rgb = null;
+    
+    
     public Color[][] getNewLumRGB(){
         return new_lum_rgb;
+    }
+    
+    public Color[][] getVFlipRGB(){
+        return vflip_rgb;
+    }
+    
+    public Color[][] getHFlipRGB(){
+        return hflip_rgb;
     }
     
     public int getWidth(){
@@ -44,6 +58,9 @@ public class ImageProcessor {
     
     private void setRGBDimension(){
         rgb = new Color[width][height];
+        new_lum_rgb = new Color[width][height];
+        hflip_rgb = new Color[width][height];
+        vflip_rgb = new Color[width][height];
     }
     
     public void setDimensions(int width, int height){
@@ -61,7 +78,6 @@ public class ImageProcessor {
     }
     
     public void setNewLuminanceRGB(){
-        new_lum_rgb = new Color[width][height];
         int[][] li = getNewLuminanceValues();
         for(int i = 0; i < width; i++){
             for(int j = 0; j < height; j++){
@@ -80,5 +96,29 @@ public class ImageProcessor {
             }
         }
         return li;
+    }
+    
+    public void setHorizontalFlipRGB(){        
+        for(int i = 0; i < width; i++){
+            hflip_rgb[i] = Arrays.copyOf(rgb[(width - 1) - i], height);
+        }
+    }
+    
+    public void setVerticalFlipRGB(){  
+        Color[][] transpose = matrixTranspose(rgb,width,height);
+        for(int i = 0; i < height; i++){
+            vflip_rgb[i] = Arrays.copyOf(transpose[(height - 1) - i], width);
+        }
+        vflip_rgb = matrixTranspose(vflip_rgb,height,width);
+    }
+    
+    private Color[][] matrixTranspose(Color[][] matrix, int width, int height){
+        Color[][] transpose = new Color[height][width];
+        for(int i = 0; i < width; i++){
+            for(int j = 0; j < height; j++){
+                transpose[j][i] = matrix[i][j];
+            }
+        }  
+        return transpose;
     }
 }
