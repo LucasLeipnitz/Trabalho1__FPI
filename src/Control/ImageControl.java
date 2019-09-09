@@ -22,8 +22,6 @@ public class ImageControl {
     private BufferedImage rst_image = null;
     private String filepath = null;
     private ImageProcessor processor = new ImageProcessor();
-    private int width;
-    private int height;
     
     public void setFilePath(String filepath){
         this.filepath = filepath;
@@ -45,8 +43,6 @@ public class ImageControl {
         try{
             image = ImageIO.read(new File(filepath));
             current_image = image;
-            width = image.getWidth();
-            height = image.getHeight();
             
         }catch(Exception exc){
             exc.printStackTrace();

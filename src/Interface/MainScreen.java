@@ -95,14 +95,14 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        vflip_button.setText("Espalhamento Vertical");
+        vflip_button.setText("Espelhamento Vertical");
         vflip_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vflip_buttonActionPerformed(evt);
             }
         });
 
-        hflip_button1.setText("Espalhamento Horizontal");
+        hflip_button1.setText("Espelhamento Horizontal");
         hflip_button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hflip_button1ActionPerformed(evt);

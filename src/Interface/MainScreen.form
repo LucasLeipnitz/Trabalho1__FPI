@@ -199,7 +199,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="vflip_button">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Espalhamento Vertical"/>
+        <Property name="text" type="java.lang.String" value="Espelhamento Vertical"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vflip_buttonActionPerformed"/>
@@ -207,7 +207,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="hflip_button1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Espalhamento Horizontal"/>
+        <Property name="text" type="java.lang.String" value="Espelhamento Horizontal"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hflip_button1ActionPerformed"/>

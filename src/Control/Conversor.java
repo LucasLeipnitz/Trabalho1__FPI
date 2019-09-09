@@ -49,10 +49,6 @@ public class Conversor {
                 blue = rgb_color[i][j].getBlue();
                 a = 255;
                 rgb_int[i][j] = (a << 24) | (red << 16) | (green << 8) | blue;
-                
-                //System.out.print("Red: " + red);
-                //System.out.print(" - Green: " + green);
-                //System.out.print(" - Blue: " + blue + "\n");
             }
         }
         return rgb_int;

@@ -27,11 +27,6 @@ public class ImageProcessor {
     private Color[][] hflip_rgb = null;
     private Color[][] vflip_rgb = null;
     
-    /*Histogram Equalization*/
-    private int[] histogram = new int[256];
-    private int maximum_pixels = 0;
-    private int[][] equa_image = null;
-    
     
     public Color[][] getNewLumRGB(){
         return new_lum_rgb;
