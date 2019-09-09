@@ -66,7 +66,7 @@ public class SaveScreen extends javax.swing.JFrame {
             }
         });
 
-        error_label.setText("Imagem não selecionada");
+        error_label.setText("Ocorreu um erro ao salvar a imagem");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
