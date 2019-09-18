@@ -8,6 +8,7 @@ package Control;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import static java.util.Arrays.sort;
 
 /**
  *
@@ -27,6 +28,9 @@ public class ImageProcessor {
     private Color[][] hflip_rgb = null;
     private Color[][] vflip_rgb = null;
     
+    /*Equalization*/
+    private Color[][] equa_rgb = null;
+    
     
     public Color[][] getNewLumRGB(){
         return new_lum_rgb;
@@ -38,6 +42,10 @@ public class ImageProcessor {
     
     public Color[][] getHFlipRGB(){
         return hflip_rgb;
+    }
+    
+    public Color[][] getEquaRGB(){
+        return equa_rgb;
     }
     
     public int getWidth(){
@@ -61,6 +69,7 @@ public class ImageProcessor {
         new_lum_rgb = new Color[width][height];
         hflip_rgb = new Color[width][height];
         vflip_rgb = new Color[width][height];
+        equa_rgb = new Color[width][height];
     }
     
     public void setDimensions(int width, int height){
@@ -120,5 +129,51 @@ public class ImageProcessor {
             }
         }  
         return transpose;
+    }
+    
+    private double[] getHistogram(Color[][] rgb, int weigth, int height){
+        double[] histogram = new double[256];
+        int i,j;
+        /*Inicializa posições do histrograma com 0*/
+        for(i = 0; i < 256; i++){
+            histogram[i] = 0;
+        }
+        
+        /*Cria histograma, como é tons de cinza, todos os tons
+        (azul, vermelho e verde) são o mesmo valor, então pega qualquer um*/
+        for(i = 0; i < weigth; i++){
+            for(j = 0; j < height; j++){
+                histogram[rgb[i][j].getRed()]++;
+            }
+        }
+        
+        /*Ordena em ordem crescente*/
+        sort(histogram);
+        
+        
+        /*for(i = 0; i < 256; i++){
+            System.out.println(histogram[i]);
+        }*/
+        
+        return histogram;
+    }
+    
+    public void histogramEqualization(){ 
+        double[] histogram = new double[256];
+        double[] hist_cum = new double[256];
+        double a = 255.0/(width*height);
+        int i,j;
+        
+        histogram = getHistogram(new_lum_rgb,width,height);
+        hist_cum[0] = a*histogram[0];
+        for(i = 1; i < 256; i++){
+            hist_cum[i] = hist_cum[i-1] + a*histogram[i];
+        }
+        
+        for(i = 0; i < width; i++){
+            for(j = 0; j < height; j++){
+                equa_rgb[i][j] = new Color((int)hist_cum[new_lum_rgb[i][j].getRed()],(int)hist_cum[new_lum_rgb[i][j].getGreen()],(int)hist_cum[new_lum_rgb[i][j].getBlue()]);
+            }
+        }
     }
 }

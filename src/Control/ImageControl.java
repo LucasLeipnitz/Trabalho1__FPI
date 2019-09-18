@@ -86,6 +86,18 @@ public class ImageControl {
         current_image = rst_image;
     }
     
+    public void equaImage(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        processor.setNewLuminanceRGB();
+        processor.histogramEqualization();
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getEquaRGB(),width,height),width,height);
+        current_image = rst_image;
+    }
+    
     public void hFlipImage(){
         int width = current_image.getWidth();
         int height = current_image.getHeight();

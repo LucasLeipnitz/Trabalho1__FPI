@@ -55,9 +55,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="image_button" min="-2" max="-2" attributes="0"/>
-                                  <Component id="save_button" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="image_button" min="-2" max="-2" attributes="0"/>
+                                      <Component id="save_button" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="equa_button" min="-2" max="-2" attributes="0"/>
+                                  <Component id="hist_button" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -155,6 +159,10 @@
                       <Component id="image_button" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="save_button" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="equa_button" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hist_button" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -272,6 +280,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Selecionar e Salvar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="equa_button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Equalizacao"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="equa_buttonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="hist_button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Histograma"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hist_buttonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

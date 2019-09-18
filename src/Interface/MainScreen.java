@@ -15,7 +15,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import Control.ImageControl;
-import Control.ImageProcessor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -64,6 +68,8 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        equa_button = new javax.swing.JButton();
+        hist_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +139,20 @@ public class MainScreen extends javax.swing.JFrame {
 
         jLabel13.setText("Selecionar e Salvar");
 
+        equa_button.setText("Equalizacao");
+        equa_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                equa_buttonActionPerformed(evt);
+            }
+        });
+
+        hist_button.setText("Histograma");
+        hist_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hist_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +182,12 @@ public class MainScreen extends javax.swing.JFrame {
                                 .addGap(4, 4, 4))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(image_button)
-                                    .addComponent(save_button)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(image_button)
+                                        .addComponent(save_button)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(equa_button)
+                                    .addComponent(hist_button))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +262,11 @@ public class MainScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(image_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(save_button)))
+                        .addComponent(save_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(equa_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hist_button)))
                 .addContainerGap())
         );
 
@@ -323,6 +350,28 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hflip_button1ActionPerformed
 
+    private void equa_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equa_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.equaImage();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_equa_buttonActionPerformed
+
+    private void hist_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hist_buttonActionPerformed
+
+                BarChart example = new BarChart("Bar Chart Window");
+                example.setSize(800, 400);
+                example.setLocationRelativeTo(null);
+                example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                example.setVisible(true);
+    }//GEN-LAST:event_hist_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,8 +409,10 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton copy_button;
+    private javax.swing.JButton equa_button;
     private javax.swing.JButton grey_button;
     private javax.swing.JButton hflip_button1;
+    private javax.swing.JButton hist_button;
     private javax.swing.JButton image_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
