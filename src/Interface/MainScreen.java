@@ -18,6 +18,7 @@ import Control.ImageControl;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.Stage;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
@@ -366,10 +367,6 @@ public class MainScreen extends javax.swing.JFrame {
     private void hist_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hist_buttonActionPerformed
 
                 BarChart example = new BarChart("Bar Chart Window");
-                example.setSize(800, 400);
-                example.setLocationRelativeTo(null);
-                example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                example.setVisible(true);
     }//GEN-LAST:event_hist_buttonActionPerformed
 
     /**

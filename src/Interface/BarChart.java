@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import javafx.scene.chart.CategoryAxis;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
@@ -21,6 +22,7 @@ import org.jfree.chart.renderer.xy.XYBarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.statistics.HistogramDataset;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 
 
 /**
@@ -34,41 +36,40 @@ public class BarChart extends JFrame{
         super(appTitle);
         
 
-        // Create Dataset
-        CategoryDataset dataset = createDataset();
+        String title = "Bar chart Color Example";
 
-        //Create chart
-        JFreeChart chart = ChartFactory.createBarChart(
-            "Bar Chart Example | BORAJI.COM", //Chart Title
-            "Year", // Category axis
-            "Population in Million", // Value axis
-            dataset,
-            PlotOrientation.VERTICAL,
-            false,false,true
-           );
-        
-        
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                
+                /* create chart */
+		JFreeChart chart = ChartFactory.createBarChart(title, "heights", "Number Of Persons", dataset);
 
-        ChartPanel panel = new ChartPanel(chart);
-        setContentPane(panel);
+		/* Get instance of CategoryPlot */
+		CategoryPlot plot = chart.getCategoryPlot();
+
+		/* Change Bar colors */
+		BarRenderer renderer = (BarRenderer) plot.getRenderer();
+
+		for(int i = 0; i < 256; i++){
+                    dataset.addValue(i+1, Integer.toString(i+1), "0 ... 255");
+                    renderer.setSeriesPaint(i, Color.blue);
+                }
+
+		renderer.setDrawBarOutline(false);
+		renderer.setItemMargin(0);
+
+		/* create and display chart on frame */
+		ChartFrame frame = new ChartFrame("JFreeChart Demo", chart);
+		frame.setVisible(true);
+		frame.pack();
     }
 
     private CategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        // Population in 2005
-        dataset.addValue(10, "USA", "2005");
-        dataset.addValue(15, "India", "2005");
-        dataset.addValue(20, "China", "2005");
-        dataset.addValue(50, "K", "2005");
-        dataset.addValue(20, "d", "2005");
-        dataset.addValue(20, "f", "2005");
-        dataset.addValue(20, "j", "2005");
-        dataset.addValue(20, "i", "2005");
-        dataset.addValue(20, "m", "2005");
-        dataset.addValue(20, "n", "2005");
-        dataset.addValue(20, "z", "2005");
-        dataset.addValue(20, "d", "2005");  
+        
+        
+        for(int i = 0; i < 256; i++){
+            dataset.addValue(i+1, Integer.toString(i+1), "0 ... 255");
+        }
 
         return dataset;
     }
