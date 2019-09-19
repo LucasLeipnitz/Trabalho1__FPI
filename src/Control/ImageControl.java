@@ -92,8 +92,8 @@ public class ImageControl {
         
         processor.setDimensions(width, height);
         processor.setRGBValues(current_image);
-        processor.setNewLuminanceRGB();
-        processor.histogramEqualization();
+        //processor.setNewLuminanceRGB();
+        processor.histogramEqualization(processor.getRGB());
         rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getEquaRGB(),width,height),width,height);
         current_image = rst_image;
     }
@@ -117,6 +117,35 @@ public class ImageControl {
         processor.setRGBValues(current_image);
         processor.setVerticalFlipRGB();
         rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getVFlipRGB(),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public double[] imageHistogram(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        return processor.getHistogram(processor.getRGB(),width,height);
+    }
+    
+    public void setBright(int a,int b){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.linearTransformation(a,b),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public void setNegative(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getNegative(),width,height),width,height);
         current_image = rst_image;
     }
 }

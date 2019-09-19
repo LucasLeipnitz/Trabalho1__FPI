@@ -32,6 +32,10 @@ public class ImageProcessor {
     private Color[][] equa_rgb = null;
     
     
+    public Color[][] getRGB(){
+        return rgb;
+    }
+    
     public Color[][] getNewLumRGB(){
         return new_lum_rgb;
     }
@@ -131,7 +135,7 @@ public class ImageProcessor {
         return transpose;
     }
     
-    private double[] getHistogram(Color[][] rgb, int weigth, int height){
+    public double[] getHistogram(Color[][] rgb, int weigth, int height){
         double[] histogram = new double[256];
         int i,j;
         /*Inicializa posições do histrograma com 0*/
@@ -158,13 +162,13 @@ public class ImageProcessor {
         return histogram;
     }
     
-    public void histogramEqualization(){ 
+    public void histogramEqualization(Color[][] rgb){ 
         double[] histogram = new double[256];
         double[] hist_cum = new double[256];
         double a = 255.0/(width*height);
         int i,j;
         
-        histogram = getHistogram(new_lum_rgb,width,height);
+        histogram = getHistogram(rgb,width,height);
         hist_cum[0] = a*histogram[0];
         for(i = 1; i < 256; i++){
             hist_cum[i] = hist_cum[i-1] + a*histogram[i];
@@ -172,8 +176,56 @@ public class ImageProcessor {
         
         for(i = 0; i < width; i++){
             for(j = 0; j < height; j++){
-                equa_rgb[i][j] = new Color((int)hist_cum[new_lum_rgb[i][j].getRed()],(int)hist_cum[new_lum_rgb[i][j].getGreen()],(int)hist_cum[new_lum_rgb[i][j].getBlue()]);
+                equa_rgb[i][j] = new Color((int)hist_cum[rgb[i][j].getRed()],(int)hist_cum[rgb[i][j].getGreen()],(int)hist_cum[rgb[i][j].getBlue()]);
             }
         }
+    }
+    
+    public Color[][] linearTransformation(int a, int b){
+        Color[][] trans_rgb = new Color[width][height];
+        int red,green,blue;
+        
+        for(int i = 0; i < width; i++){
+            for(int j = 0; j < height; j++){
+                red = a*rgb[i][j].getRed() + b;
+                if(red > 255){
+                    red = 255;
+                }
+                if(red < 0){
+                    red = 0;
+                }
+                green = a*rgb[i][j].getGreen() + b;
+                if(green > 255){
+                    green = 255;
+                }
+                if(green < 0){
+                    green = 0;
+                }
+                blue = a*rgb[i][j].getBlue() + b;
+                if(blue > 255){
+                    blue = 255;
+                }
+                if(blue < 0){
+                    blue = 0;
+                }
+                trans_rgb[i][j] = new Color(red,green,blue);
+            }
+        } 
+        return trans_rgb;
+    }
+    
+    public Color[][] getNegative(){
+        Color[][] negative_rgb = new Color[width][height];
+        int red,green,blue;
+        
+        for(int i = 0; i < width; i++){
+            for(int j = 0; j < height; j++){
+                red = 255 - rgb[i][j].getRed();
+                green = 255 - rgb[i][j].getGreen();
+                blue = 255 - rgb[i][j].getBlue();
+                negative_rgb[i][j] = new Color(red,green,blue);
+            }
+        } 
+        return negative_rgb;
     }
 }

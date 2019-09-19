@@ -71,6 +71,11 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         equa_button = new javax.swing.JButton();
         hist_button = new javax.swing.JButton();
+        bright_text_field = new javax.swing.JTextField();
+        contrast_text_field = new javax.swing.JTextField();
+        bright_button = new javax.swing.JButton();
+        contrast_button = new javax.swing.JButton();
+        negative_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,7 +121,7 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("T1 - Processamento de Imagens");
+        jLabel2.setText("T2 - Processamento de Imagens");
 
         jLabel3.setText("Primeiramente, escolha uma imagem no botão Selecionar Imagem");
 
@@ -154,68 +159,114 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        bright_text_field.setText("0");
+        bright_text_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bright_text_fieldActionPerformed(evt);
+            }
+        });
+
+        contrast_text_field.setText("1");
+        contrast_text_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrast_text_fieldActionPerformed(evt);
+            }
+        });
+
+        bright_button.setText("Brilho");
+        bright_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bright_buttonActionPerformed(evt);
+            }
+        });
+
+        contrast_button.setText("Contraste");
+        contrast_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrast_buttonActionPerformed(evt);
+            }
+        });
+
+        negative_button.setText("Negativo");
+        negative_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                negative_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(120, 120, 120)
+                            .addComponent(jLabel2)
+                            .addGap(171, 171, 171))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jLabel5)
+                                    .addGap(187, 187, 187))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(29, 29, 29)
-                                            .addComponent(jLabel5)
-                                            .addGap(93, 93, 93))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel9)))
-                                            .addComponent(jLabel10))))
-                                .addGap(4, 4, 4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(image_button)
-                                        .addComponent(save_button)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(equa_button)
-                                    .addComponent(hist_button))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(hflip_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(vflip_button)
-                                        .addComponent(grey_button)
-                                        .addComponent(copy_button))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addGap(90, 90, 90))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(171, 171, 171))
-                                    .addComponent(jLabel1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(172, 172, 172)
-                                .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                            .addGap(12, 12, 12)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel9)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(image_button)
+                                                            .addComponent(save_button)
+                                                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                        .addComponent(equa_button)
+                                                        .addComponent(hist_button)
+                                                        .addComponent(grey_button))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(hflip_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(vflip_button)
+                                                                .addComponent(copy_button)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                        .addComponent(bright_button)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                            .addComponent(contrast_button)
+                                                                            .addComponent(negative_button))
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                            .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(jLabel12)
+                                                            .addGap(90, 90, 90))))))
+                                        .addComponent(jLabel10))
+                                    .addGap(94, 94, 94)))
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(21, 21, 21)
+                                    .addComponent(jLabel7)))
+                            .addGap(97, 97, 97))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,10 +276,9 @@ public class MainScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(178, 178, 178)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
@@ -236,7 +286,7 @@ public class MainScreen extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(30, 30, 30)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
@@ -245,21 +295,13 @@ public class MainScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addGap(29, 29, 29)))
+                        .addComponent(jLabel9)))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(copy_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vflip_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hflip_button1)
-                        .addGap(9, 9, 9)
-                        .addComponent(grey_button))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(image_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,8 +309,26 @@ public class MainScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(equa_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hist_button)))
-                .addContainerGap())
+                        .addComponent(hist_button)
+                        .addGap(7, 7, 7)
+                        .addComponent(grey_button))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(copy_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vflip_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hflip_button1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bright_button, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contrast_button, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(negative_button)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -366,8 +426,52 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void hist_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hist_buttonActionPerformed
 
-                BarChart example = new BarChart("Bar Chart Window");
+        BarChart example = new BarChart("Histogram",img_control.imageHistogram());
     }//GEN-LAST:event_hist_buttonActionPerformed
+
+    private void bright_text_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bright_text_fieldActionPerformed
+        if(bright_text_field.getText() == ""){
+            bright_text_field.setText("0");
+        }
+    }//GEN-LAST:event_bright_text_fieldActionPerformed
+
+    private void contrast_text_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrast_text_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contrast_text_fieldActionPerformed
+
+    private void bright_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bright_buttonActionPerformed
+        img_screen.setRstVisible(true);
+        img_screen.setVisible(false);
+        //if(bright_text_field.getText() == null){
+        if(bright_text_field.getText().equals("")){
+            bright_text_field.setText("0");
+        }
+        img_control.setBright(1, Integer.parseInt(bright_text_field.getText()));
+        img_screen.setRstImage(img_control.getRstImage());
+        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+        img_screen.setVisible(true);
+    }//GEN-LAST:event_bright_buttonActionPerformed
+
+    private void contrast_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrast_buttonActionPerformed
+        img_screen.setRstVisible(true);
+        img_screen.setVisible(false);
+        if(contrast_text_field.getText().equals("")){
+            contrast_text_field.setText("1");
+        }
+        img_control.setBright(Integer.parseInt(contrast_text_field.getText()), 0);
+        img_screen.setRstImage(img_control.getRstImage());
+        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+        img_screen.setVisible(true);
+    }//GEN-LAST:event_contrast_buttonActionPerformed
+
+    private void negative_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negative_buttonActionPerformed
+        img_screen.setRstVisible(true);
+        img_screen.setVisible(false);
+        img_control.setNegative();
+        img_screen.setRstImage(img_control.getRstImage());
+        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+        img_screen.setVisible(true);
+    }//GEN-LAST:event_negative_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,6 +509,10 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bright_button;
+    private javax.swing.JTextField bright_text_field;
+    private javax.swing.JButton contrast_button;
+    private javax.swing.JTextField contrast_text_field;
     private javax.swing.JButton copy_button;
     private javax.swing.JButton equa_button;
     private javax.swing.JButton grey_button;
@@ -424,6 +532,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton negative_button;
     private javax.swing.JButton save_button;
     private javax.swing.JButton vflip_button;
     // End of variables declaration//GEN-END:variables

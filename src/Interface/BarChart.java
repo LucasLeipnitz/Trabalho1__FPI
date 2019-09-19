@@ -32,45 +32,33 @@ import org.jfree.chart.renderer.category.StandardBarPainter;
 public class BarChart extends JFrame{
     private static final long serialVersionUID = 1L;
     
-    public BarChart(String appTitle) {
+    public BarChart(String appTitle, double[] histogram) {
         super(appTitle);
         
+        String title = "Histograma";
 
-        String title = "Bar chart Color Example";
-
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
                 
-                /* create chart */
-		JFreeChart chart = ChartFactory.createBarChart(title, "heights", "Number Of Persons", dataset);
+        /* create chart */
+	JFreeChart chart = ChartFactory.createBarChart(title, "Tons de Cinza", "Quantidade", dataset, PlotOrientation.VERTICAL, false, false, false);
 
-		/* Get instance of CategoryPlot */
-		CategoryPlot plot = chart.getCategoryPlot();
+	/* Get instance of CategoryPlot */
+	CategoryPlot plot = chart.getCategoryPlot();
 
-		/* Change Bar colors */
-		BarRenderer renderer = (BarRenderer) plot.getRenderer();
-
-		for(int i = 0; i < 256; i++){
-                    dataset.addValue(i+1, Integer.toString(i+1), "0 ... 255");
-                    renderer.setSeriesPaint(i, Color.blue);
-                }
-
-		renderer.setDrawBarOutline(false);
-		renderer.setItemMargin(0);
-
-		/* create and display chart on frame */
-		ChartFrame frame = new ChartFrame("JFreeChart Demo", chart);
-		frame.setVisible(true);
-		frame.pack();
-    }
-
-    private CategoryDataset createDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        
+	/* Change Bar colors */
+	BarRenderer renderer = (BarRenderer) plot.getRenderer();
         
         for(int i = 0; i < 256; i++){
-            dataset.addValue(i+1, Integer.toString(i+1), "0 ... 255");
+            dataset.addValue(histogram[i], Integer.toString(i), "0 ... 255");
+            renderer.setSeriesPaint(i, Color.blue);
         }
 
-        return dataset;
+	renderer.setDrawBarOutline(false);
+	renderer.setItemMargin(0);
+
+	/* create and display chart on frame */
+	ChartFrame frame = new ChartFrame("JFreeChart Demo", chart);
+	frame.setVisible(true);
+	frame.pack();
     }
 }
