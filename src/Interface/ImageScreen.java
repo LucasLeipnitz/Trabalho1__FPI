@@ -6,6 +6,7 @@
 package Interface;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -17,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -47,6 +49,10 @@ public class ImageScreen {
         rst_label.setVisible(option);
     }
     
+    public void setSrcVisible(boolean option){
+        rst_label.setVisible(option);
+    }
+    
     private void setImage(BufferedImage image){
         src_label.setIcon(new ImageIcon(image));
     }
@@ -55,8 +61,8 @@ public class ImageScreen {
         rst_label.setIcon(new ImageIcon(image));
     }
     
-    private void setFrame(String filepath){
-        frame = new JFrame(filepath);
+    private void setFrame(){
+        frame = new JFrame();
 
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -69,6 +75,7 @@ public class ImageScreen {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         panel.add(src_label);
         panel.add(rst_label);
+
         //frame.getContentPane().add(label,BorderLayout.CENTER);
         frame.add(panel);
         frame.pack();
@@ -76,10 +83,10 @@ public class ImageScreen {
         frame.setVisible(true);
     }
     
-    public void setScreen(BufferedImage image, String filepath){
+    public void setScreen(BufferedImage image){
         setClosed(false);
         setImage(image);
-        setFrame(filepath);
+        setFrame();
     }
     
     public void setVisible(boolean option){

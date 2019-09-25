@@ -31,6 +31,7 @@ public class MainScreen extends javax.swing.JFrame {
     
     ImageControl img_control = new ImageControl();
     ImageScreen img_screen = new ImageScreen();
+    ImageScreen img_zoom = new ImageScreen();
     SaveScreen save = new SaveScreen();
     AlertScreen alert = new AlertScreen();
     
@@ -58,15 +59,6 @@ public class MainScreen extends javax.swing.JFrame {
         vflip_button = new javax.swing.JButton();
         hflip_button1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         equa_button = new javax.swing.JButton();
@@ -76,6 +68,29 @@ public class MainScreen extends javax.swing.JFrame {
         bright_button = new javax.swing.JButton();
         contrast_button = new javax.swing.JButton();
         negative_button = new javax.swing.JButton();
+        matching_button = new javax.swing.JButton();
+        zout_button = new javax.swing.JButton();
+        zin_button = new javax.swing.JButton();
+        conv_button = new javax.swing.JButton();
+        filter_field_1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        filter_field_2 = new javax.swing.JTextField();
+        filter_field_3 = new javax.swing.JTextField();
+        filter_field_4 = new javax.swing.JTextField();
+        filter_field_6 = new javax.swing.JTextField();
+        filter_field_7 = new javax.swing.JTextField();
+        filter_field_9 = new javax.swing.JTextField();
+        filter_field_5 = new javax.swing.JTextField();
+        filter_field_8 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        gauss_button = new javax.swing.JButton();
+        lap_button = new javax.swing.JButton();
+        pass_button = new javax.swing.JButton();
+        pre_hx_button = new javax.swing.JButton();
+        pre_hy_hx_button = new javax.swing.JButton();
+        sobel_hx_button = new javax.swing.JButton();
+        sobel_hy_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,25 +138,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jLabel2.setText("T2 - Processamento de Imagens");
 
-        jLabel3.setText("Primeiramente, escolha uma imagem no botão Selecionar Imagem");
-
-        jLabel4.setText("para poder escolher as outras quatro opções.");
-
-        jLabel5.setText("Seleciona um arquivo de Imagem em disco");
-
-        jLabel6.setText("Selecionar e Salvar:");
-
-        jLabel7.setText("Info:");
-
-        jLabel8.setText("Salva imagem resultado de uma operação.");
-
-        jLabel9.setText("Se nenhuma operação for feita, salva imagem selecionada. ");
-
-        jLabel10.setText("Selecionar:");
-
-        jLabel11.setText("Salvar:");
-
-        jLabel12.setText("Operações:");
+        jLabel12.setText("Operações 1:");
 
         jLabel13.setText("Selecionar e Salvar");
 
@@ -194,141 +191,329 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        matching_button.setText("Matching");
+        matching_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matching_buttonActionPerformed(evt);
+            }
+        });
+
+        zout_button.setText("Zoom Out");
+        zout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zout_buttonActionPerformed(evt);
+            }
+        });
+
+        zin_button.setText("Zoom In");
+        zin_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zin_buttonActionPerformed(evt);
+            }
+        });
+
+        conv_button.setText("Convolution");
+        conv_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conv_buttonActionPerformed(evt);
+            }
+        });
+
+        filter_field_1.setText("0.0625");
+        filter_field_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Valores do Filtro");
+
+        filter_field_2.setText("0.125");
+        filter_field_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_2ActionPerformed(evt);
+            }
+        });
+
+        filter_field_3.setText("0.0625");
+        filter_field_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_3ActionPerformed(evt);
+            }
+        });
+
+        filter_field_4.setText("0.125");
+        filter_field_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_4ActionPerformed(evt);
+            }
+        });
+
+        filter_field_6.setText("0.125");
+        filter_field_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_6ActionPerformed(evt);
+            }
+        });
+
+        filter_field_7.setText("0.0625");
+        filter_field_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_7ActionPerformed(evt);
+            }
+        });
+
+        filter_field_9.setText("0.0625");
+        filter_field_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_9ActionPerformed(evt);
+            }
+        });
+
+        filter_field_5.setText("0.25");
+        filter_field_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_5ActionPerformed(evt);
+            }
+        });
+
+        filter_field_8.setText("0.125");
+        filter_field_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filter_field_8ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Operações 2:");
+
+        jLabel3.setText("Filtros");
+
+        gauss_button.setText("Gaussiano");
+        gauss_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gauss_buttonActionPerformed(evt);
+            }
+        });
+
+        lap_button.setText("Laplaciano");
+        lap_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lap_buttonActionPerformed(evt);
+            }
+        });
+
+        pass_button.setText("Passa Alta");
+        pass_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pass_buttonActionPerformed(evt);
+            }
+        });
+
+        pre_hx_button.setText("Prewitt Hx");
+        pre_hx_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pre_hx_buttonActionPerformed(evt);
+            }
+        });
+
+        pre_hy_hx_button.setText("Prewitt Hy Hx");
+        pre_hy_hx_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pre_hy_hx_buttonActionPerformed(evt);
+            }
+        });
+
+        sobel_hx_button.setText("Sobel Hx");
+        sobel_hx_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobel_hx_buttonActionPerformed(evt);
+            }
+        });
+
+        sobel_hy_button.setText("Sobel Hy");
+        sobel_hy_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sobel_hy_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(jLabel2)
-                            .addGap(171, 171, 171))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(jLabel5)
-                                    .addGap(187, 187, 187))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(12, 12, 12)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel9)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(image_button)
-                                                            .addComponent(save_button)
-                                                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                        .addComponent(equa_button)
-                                                        .addComponent(hist_button)
-                                                        .addComponent(grey_button))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(hflip_button1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(vflip_button)
-                                                                .addComponent(copy_button)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                        .addComponent(bright_button)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                            .addComponent(contrast_button)
-                                                                            .addComponent(negative_button))
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                            .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                            .addComponent(jLabel12)
-                                                            .addGap(90, 90, 90))))))
-                                        .addComponent(jLabel10))
-                                    .addGap(94, 94, 94)))
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
+                                    .addComponent(bright_button)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addComponent(jLabel7)))
-                            .addGap(97, 97, 97))))
+                                    .addComponent(contrast_button)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(zout_button)
+                            .addComponent(zin_button)
+                            .addComponent(negative_button)
+                            .addComponent(hist_button)
+                            .addComponent(jLabel15)
+                            .addComponent(matching_button))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(hflip_button1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vflip_button, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(copy_button, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(equa_button, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(grey_button, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(image_button)
+                                .addGap(10, 10, 10)
+                                .addComponent(save_button))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(filter_field_4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filter_field_1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filter_field_7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel14)
+                                .addGap(124, 124, 124)
+                                .addComponent(jLabel3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(174, 174, 174)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(filter_field_2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(filter_field_5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(filter_field_8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(filter_field_3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(filter_field_6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(filter_field_9, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(conv_button))
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pass_button)
+                                    .addComponent(pre_hx_button)
+                                    .addComponent(pre_hy_hx_button)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(gauss_button)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sobel_hx_button))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lap_button)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sobel_hy_button)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jLabel13)))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jLabel2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(image_button)
+                    .addComponent(save_button))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(image_button)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(save_button)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(copy_button)
+                            .addComponent(hist_button))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(equa_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hist_button)
-                        .addGap(7, 7, 7)
-                        .addComponent(grey_button))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(vflip_button)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hflip_button1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(grey_button)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(equa_button))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(negative_button)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(bright_button, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(contrast_button, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(zout_button)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(zin_button))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(copy_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vflip_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hflip_button1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bright_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bright_button, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(contrast_text_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contrast_button, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(negative_button)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(matching_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gauss_button)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(filter_field_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(filter_field_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(filter_field_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sobel_hx_button)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filter_field_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filter_field_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filter_field_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lap_button)
+                    .addComponent(sobel_hy_button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filter_field_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filter_field_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filter_field_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass_button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(conv_button)
+                    .addComponent(pre_hx_button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pre_hy_hx_button)
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -345,7 +530,9 @@ public class MainScreen extends javax.swing.JFrame {
             img_control.setImage();
             img_control.copyImage();
             img_screen.setRstVisible(false);
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
+            img_zoom.setScreen(img_control.getImage());
+            img_zoom.setVisible(false);
             save.setControl(img_control);
         }
     }//GEN-LAST:event_image_buttonActionPerformed
@@ -367,7 +554,7 @@ public class MainScreen extends javax.swing.JFrame {
             img_screen.setVisible(false);
             img_control.copyImage();
             img_screen.setRstImage(img_control.getRstImage());
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_copy_buttonActionPerformed
@@ -380,7 +567,7 @@ public class MainScreen extends javax.swing.JFrame {
             img_screen.setVisible(false);
             img_control.greyImage();
             img_screen.setRstImage(img_control.getRstImage());
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_grey_buttonActionPerformed
@@ -393,7 +580,7 @@ public class MainScreen extends javax.swing.JFrame {
             img_screen.setVisible(false);
             img_control.vFlipImage();
             img_screen.setRstImage(img_control.getRstImage());
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_vflip_buttonActionPerformed
@@ -406,7 +593,7 @@ public class MainScreen extends javax.swing.JFrame {
             img_screen.setVisible(false);
             img_control.hFlipImage();
             img_screen.setRstImage(img_control.getRstImage());
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_hflip_button1ActionPerformed
@@ -419,7 +606,7 @@ public class MainScreen extends javax.swing.JFrame {
             img_screen.setVisible(false);
             img_control.equaImage();
             img_screen.setRstImage(img_control.getRstImage());
-            img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
+            img_screen.setScreen(img_control.getImage());
             img_screen.setVisible(true);
         }
     }//GEN-LAST:event_equa_buttonActionPerformed
@@ -440,38 +627,239 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_contrast_text_fieldActionPerformed
 
     private void bright_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bright_buttonActionPerformed
-        img_screen.setRstVisible(true);
-        img_screen.setVisible(false);
-        //if(bright_text_field.getText() == null){
-        if(bright_text_field.getText().equals("")){
-            bright_text_field.setText("0");
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            //if(bright_text_field.getText() == null){
+            if(bright_text_field.getText().equals("")){
+                bright_text_field.setText("0");
+            }
+            img_control.setBright(1, Integer.parseInt(bright_text_field.getText()));
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage());
+            img_screen.setVisible(true);
         }
-        img_control.setBright(1, Integer.parseInt(bright_text_field.getText()));
-        img_screen.setRstImage(img_control.getRstImage());
-        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
-        img_screen.setVisible(true);
     }//GEN-LAST:event_bright_buttonActionPerformed
 
     private void contrast_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrast_buttonActionPerformed
-        img_screen.setRstVisible(true);
-        img_screen.setVisible(false);
-        if(contrast_text_field.getText().equals("")){
-            contrast_text_field.setText("1");
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            if(contrast_text_field.getText().equals("")){
+                contrast_text_field.setText("1");
+            }
+            img_control.setBright(Integer.parseInt(contrast_text_field.getText()), 0);
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage());
+            img_screen.setVisible(true);
         }
-        img_control.setBright(Integer.parseInt(contrast_text_field.getText()), 0);
-        img_screen.setRstImage(img_control.getRstImage());
-        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
-        img_screen.setVisible(true);
     }//GEN-LAST:event_contrast_buttonActionPerformed
 
     private void negative_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negative_buttonActionPerformed
-        img_screen.setRstVisible(true);
-        img_screen.setVisible(false);
-        img_control.setNegative();
-        img_screen.setRstImage(img_control.getRstImage());
-        img_screen.setScreen(img_control.getImage(),img_control.getFilePath());
-        img_screen.setVisible(true);
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.setNegative();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage());
+            img_screen.setVisible(true);
+        }
     }//GEN-LAST:event_negative_buttonActionPerformed
+
+    private void matching_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matching_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();    
+        }else{
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.imageHistogram();
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_matching_buttonActionPerformed
+
+    private void zout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zout_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_zoom.setVisible(false);
+            img_screen.setRstVisible(false);
+            img_screen.setVisible(false);
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getRstImage());
+            img_control.imageZoomOut();
+            img_screen.setVisible(true);
+            img_zoom.setScreen(img_control.getRstImage());
+            img_zoom.setVisible(true);
+        }
+    }//GEN-LAST:event_zout_buttonActionPerformed
+
+    private void zin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zin_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            img_zoom.setVisible(false);
+            img_screen.setRstVisible(false);
+            img_screen.setVisible(false);
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getRstImage());
+            img_control.imageZoomIn();
+            img_screen.setVisible(true);
+            img_zoom.setScreen(img_control.getRstImage());
+            img_zoom.setVisible(true);
+        }
+    }//GEN-LAST:event_zin_buttonActionPerformed
+
+    private void conv_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conv_buttonActionPerformed
+        if(img_screen.getClosed() == true){
+            alert.setAlertScreen();
+        }else{
+            double[][] kernel = new double[3][3];
+            kernel[0][0] = Double.parseDouble(filter_field_1.getText());
+            kernel[0][1] = Double.parseDouble(filter_field_2.getText());
+            kernel[0][2] = Double.parseDouble(filter_field_3.getText());
+            kernel[1][0] = Double.parseDouble(filter_field_4.getText());
+            kernel[1][1] = Double.parseDouble(filter_field_5.getText());
+            kernel[1][2] = Double.parseDouble(filter_field_6.getText());
+            kernel[2][0] = Double.parseDouble(filter_field_7.getText());
+            kernel[2][1] = Double.parseDouble(filter_field_8.getText());
+            kernel[2][2] = Double.parseDouble(filter_field_9.getText());
+
+            img_screen.setRstVisible(true);
+            img_screen.setVisible(false);
+            img_control.imageConvolution(kernel);
+            img_screen.setRstImage(img_control.getRstImage());
+            img_screen.setScreen(img_control.getImage());
+            img_screen.setVisible(true);
+        }
+    }//GEN-LAST:event_conv_buttonActionPerformed
+
+    private void filter_field_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_1ActionPerformed
+
+    private void filter_field_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_2ActionPerformed
+
+    private void filter_field_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_3ActionPerformed
+
+    private void filter_field_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_4ActionPerformed
+
+    private void filter_field_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_6ActionPerformed
+
+    private void filter_field_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_7ActionPerformed
+
+    private void filter_field_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_9ActionPerformed
+
+    private void filter_field_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_5ActionPerformed
+
+    private void filter_field_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filter_field_8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filter_field_8ActionPerformed
+
+    private void gauss_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gauss_buttonActionPerformed
+        filter_field_1.setText("0.0625");
+        filter_field_2.setText("0.125");
+        filter_field_3.setText("0.0625");
+        filter_field_4.setText("0.125");
+        filter_field_5.setText("0.25");
+        filter_field_6.setText("0.125");
+        filter_field_7.setText("0.0625");
+        filter_field_8.setText("0.125");
+        filter_field_9.setText("0.0625");
+    }//GEN-LAST:event_gauss_buttonActionPerformed
+
+    private void lap_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lap_buttonActionPerformed
+        filter_field_1.setText("0");
+        filter_field_2.setText("-1");
+        filter_field_3.setText("0");
+        filter_field_4.setText("-1");
+        filter_field_5.setText("4");
+        filter_field_6.setText("-1");
+        filter_field_7.setText("0");
+        filter_field_8.setText("-1");
+        filter_field_9.setText("0");
+    }//GEN-LAST:event_lap_buttonActionPerformed
+
+    private void pass_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_buttonActionPerformed
+        filter_field_1.setText("-1");
+        filter_field_2.setText("-1");
+        filter_field_3.setText("-1");
+        filter_field_4.setText("-1");
+        filter_field_5.setText("8");
+        filter_field_6.setText("-1");
+        filter_field_7.setText("-1");
+        filter_field_8.setText("-1");
+        filter_field_9.setText("-1");
+    }//GEN-LAST:event_pass_buttonActionPerformed
+
+    private void pre_hx_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_hx_buttonActionPerformed
+        filter_field_1.setText("-1");
+        filter_field_2.setText("0");
+        filter_field_3.setText("1");
+        filter_field_4.setText("-1");
+        filter_field_5.setText("0");
+        filter_field_6.setText("1");
+        filter_field_7.setText("-1");
+        filter_field_8.setText("0");
+        filter_field_9.setText("1");
+    }//GEN-LAST:event_pre_hx_buttonActionPerformed
+
+    private void pre_hy_hx_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_hy_hx_buttonActionPerformed
+        filter_field_1.setText("-1");
+        filter_field_2.setText("-1");
+        filter_field_3.setText("-1");
+        filter_field_4.setText("0");
+        filter_field_5.setText("0");
+        filter_field_6.setText("0");
+        filter_field_7.setText("1");
+        filter_field_8.setText("1");
+        filter_field_9.setText("1");
+    }//GEN-LAST:event_pre_hy_hx_buttonActionPerformed
+
+    private void sobel_hx_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobel_hx_buttonActionPerformed
+        filter_field_1.setText("-1");
+        filter_field_2.setText("0");
+        filter_field_3.setText("1");
+        filter_field_4.setText("-2");
+        filter_field_5.setText("0");
+        filter_field_6.setText("2");
+        filter_field_7.setText("-1");
+        filter_field_8.setText("0");
+        filter_field_9.setText("1");
+    }//GEN-LAST:event_sobel_hx_buttonActionPerformed
+
+    private void sobel_hy_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobel_hy_buttonActionPerformed
+        filter_field_1.setText("-1");
+        filter_field_2.setText("-2");
+        filter_field_3.setText("-1");
+        filter_field_4.setText("0");
+        filter_field_5.setText("0");
+        filter_field_6.setText("0");
+        filter_field_7.setText("1");
+        filter_field_8.setText("2");
+        filter_field_9.setText("1");
+    }//GEN-LAST:event_sobel_hy_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -513,27 +901,41 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTextField bright_text_field;
     private javax.swing.JButton contrast_button;
     private javax.swing.JTextField contrast_text_field;
+    private javax.swing.JButton conv_button;
     private javax.swing.JButton copy_button;
     private javax.swing.JButton equa_button;
+    private javax.swing.JTextField filter_field_1;
+    private javax.swing.JTextField filter_field_2;
+    private javax.swing.JTextField filter_field_3;
+    private javax.swing.JTextField filter_field_4;
+    private javax.swing.JTextField filter_field_5;
+    private javax.swing.JTextField filter_field_6;
+    private javax.swing.JTextField filter_field_7;
+    private javax.swing.JTextField filter_field_8;
+    private javax.swing.JTextField filter_field_9;
+    private javax.swing.JButton gauss_button;
     private javax.swing.JButton grey_button;
     private javax.swing.JButton hflip_button1;
     private javax.swing.JButton hist_button;
     private javax.swing.JButton image_button;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton lap_button;
+    private javax.swing.JButton matching_button;
     private javax.swing.JButton negative_button;
+    private javax.swing.JButton pass_button;
+    private javax.swing.JButton pre_hx_button;
+    private javax.swing.JButton pre_hy_hx_button;
     private javax.swing.JButton save_button;
+    private javax.swing.JButton sobel_hx_button;
+    private javax.swing.JButton sobel_hy_button;
     private javax.swing.JButton vflip_button;
+    private javax.swing.JButton zin_button;
+    private javax.swing.JButton zout_button;
     // End of variables declaration//GEN-END:variables
 }

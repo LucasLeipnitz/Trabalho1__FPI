@@ -22,6 +22,7 @@ public class ImageControl {
     private BufferedImage rst_image = null;
     private String filepath = null;
     private ImageProcessor processor = new ImageProcessor();
+    private ImageFilter filter = new ImageFilter();
     
     public void setFilePath(String filepath){
         this.filepath = filepath;
@@ -146,6 +147,56 @@ public class ImageControl {
         processor.setDimensions(width, height);
         processor.setRGBValues(current_image);
         rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.getNegative(),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public void imageMatching(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        processor.setDimensions(width, height);
+        processor.setRGBValues(current_image);
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(processor.histogramMatching
+        (processor.getRGB(),width,height,processor.getNewLumRGB(),width,height),width,height),width,height);
+        current_image = rst_image;
+    }
+    
+    public void imageZoomOut(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        filter.setDimensions(width, height);
+        filter.setRGBValues(current_image);
+        //filter.split(processor.getRGB(),2,1,5,3);
+        //Color[][] a = filter.zoomOut(2, 2);
+        
+        //System.out.println(a.length);
+        //System.out.println(a[0].length);
+        
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(filter.zoomOut(2, 2),width/2,height/2),width/2,height/2);
+        current_image = rst_image;
+    }
+    
+    public void imageZoomIn(){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        filter.setDimensions(width, height);
+        filter.setRGBValues(current_image);
+        Color[][] zoom_rgb = filter.zoomIn();
+        int zoom_width = zoom_rgb.length;
+        int zoom_height = zoom_rgb[0].length;
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(zoom_rgb,zoom_width,zoom_height),zoom_width,zoom_height);
+        current_image = rst_image;
+    }
+    
+    public void imageConvolution(double[][] kernel){
+        int width = current_image.getWidth();
+        int height = current_image.getHeight();
+        
+        filter.setDimensions(width, height);
+        filter.setRGBValues(current_image);
+        rst_image = Conversor.RGBToImage(Conversor.colorToInt(filter.imageConvolution(filter.getRGB(),kernel),width,height),width,height);
         current_image = rst_image;
     }
 }

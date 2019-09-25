@@ -14,13 +14,8 @@ import static java.util.Arrays.sort;
  *
  * @author Lucas
  */
-public class ImageProcessor {
-        
-    /*Image Info*/
-    private Color[][] rgb = null;
-    private int width = 0;
-    private int height = 0;
-    
+public class ImageProcessor extends Image{
+         
     /*Processed Image*/
     private Color[][] new_lum_rgb = null;
     
@@ -33,7 +28,7 @@ public class ImageProcessor {
     
     
     public Color[][] getRGB(){
-        return rgb;
+        return super.getRGB();
     }
     
     public Color[][] getNewLumRGB(){
@@ -53,22 +48,22 @@ public class ImageProcessor {
     }
     
     public int getWidth(){
-        return width;
+        return super.getWidth();
     }
     
     public int getHeight(){
-        return height;
+        return super.getHeight();
     }
     
-    private void setWidth(int width){
+    protected void setWidth(int width){
         this.width = width;
     }
     
-    private void setHeight(int height){
+    protected void setHeight(int height){
         this.height = height;
     }
     
-    private void setRGBDimension(){
+    protected void setRGBDimension(){
         rgb = new Color[width][height];
         new_lum_rgb = new Color[width][height];
         hflip_rgb = new Color[width][height];
@@ -77,17 +72,11 @@ public class ImageProcessor {
     }
     
     public void setDimensions(int width, int height){
-        setWidth(width);
-        setHeight(height);
-        setRGBDimension();
+        super.setDimensions(width, height);
     }
     
     public void setRGBValues(BufferedImage image){
-        for(int i = 0; i < width; i++){
-            for(int j = 0; j < height; j++){
-                rgb[i][j] = new Color(image.getRGB(i,j));
-            }
-        }
+        super.setRGBValues(image);
     }
     
     public void setNewLuminanceRGB(){
@@ -181,10 +170,75 @@ public class ImageProcessor {
         }
     }
     
+    private int getTargetShade(int level, double[] src_histogram, double[] trgt_histogram){
+        double src_value,trgt_value,current_value;
+        int position;
+        
+        src_value = src_histogram[level];
+        
+        trgt_value = src_value - trgt_histogram[0];
+        position = 0;
+        
+        for(int i = 1; i < 256; i++){
+            if(src_value > trgt_histogram[i]){
+                current_value = src_value - trgt_histogram[i];
+                if(current_value < trgt_value){
+                    trgt_value = current_value;
+                    position = i;
+                }
+            }else{
+                current_value = trgt_histogram[i] - src_value;
+                if(current_value < trgt_value){
+                    trgt_value = current_value;
+                    position = i;
+                }
+            }   
+        }
+        
+        return position;
+    }
+    
+    public Color[][] histogramMatching(Color[][] src_rgb,int src_width, int src_height, Color[][] trgt_rgb, int trgt_width, int trgt_height){
+        Color[][] hm_rgb = new Color[width][height];
+        double[] hm_histogram = new double[256];
+        double[] src_histogram = new double[256];
+        double[] src_hist_cum = new double[256];
+        double[] trgt_histogram = new double[256];
+        double[] trgt_hist_cum = new double[256];
+        int i,j;
+        double a;
+        
+        src_histogram = getHistogram(src_rgb,src_width,src_height);
+        trgt_histogram = getHistogram(trgt_rgb,trgt_width,trgt_height);
+        
+        a = 255.0/(src_width*src_height);
+        src_hist_cum[0] = a*src_histogram[0];
+        for(i = 1; i < 256; i++){
+            src_hist_cum[i] = src_hist_cum[i-1] + a*src_histogram[i];
+        }
+        
+        a = 255.0/(trgt_width*trgt_height);
+        trgt_hist_cum[0] = a*trgt_histogram[0];
+        for(i = 1; i < 256; i++){
+            trgt_hist_cum[i] = trgt_hist_cum[i-1] + a*trgt_histogram[i];
+        }        
+        
+        for(i = 0; i < 256; i++){
+            hm_histogram[i] = getTargetShade(i,src_hist_cum,trgt_hist_cum);
+        }
+        
+        for(i = 0; i < width; i++){
+            for(j = 0; j < height; j++){
+                hm_rgb[i][j] = new Color((int)hm_histogram[rgb[i][j].getRed()],(int)hm_histogram[rgb[i][j].getGreen()],(int)hm_histogram[rgb[i][j].getBlue()]);
+            }
+        }
+        
+        return hm_rgb;
+    }
+    
     public Color[][] linearTransformation(int a, int b){
         Color[][] trans_rgb = new Color[width][height];
         int red,green,blue;
-        
         for(int i = 0; i < width; i++){
             for(int j = 0; j < height; j++){
                 red = a*rgb[i][j].getRed() + b;
